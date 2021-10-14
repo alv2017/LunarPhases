@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+<body>
+  <div id="header">
+    <span class="logo">Lunar App |</span>
+
+    <span class="user">
+    {% if request.user.is_authenticated %}
+        You are logged in as <b>{{ request.user }}</b> |
+        <a href="{% url 'account:logout' %}">Logout</a>
+    {% else %}
+        You need to <a href="{% url 'account:login' %}">log-in</a>
+    {% endif %}
+    </span>
+  </div>
+
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li class="{{ message.tags }}">
+          {{ message|safe }}
+          <a href="#" class="close">x</a>
+        </li>
+      {% endfor %}
+    </ul>
+ {% endif %}
+
+  <div id="content">
+    {% block content %}
+    {% endblock %}
+  </div>
+
+<script>
+      // Remove Django message after x was clicked
+      message_close_buttons = document.getElementsByClassName("close");
+      for (let i=0; i < message_close_buttons.length; i++) {
+          message_close_buttons[i].addEventListener('click', function(e){
+              message_close_buttons[i].parentElement.remove();
+          })
+      }
+</script>
+</body>
+</html>
