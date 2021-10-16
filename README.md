@@ -30,10 +30,7 @@
 
 # Solution
 
-This is an MVP (minimal viable product solution), it implements all the requirements above except, the
-requirement number 3), the current solution relies on the SQLite database.
-
-This is a minimalistic possible solution.
+This is a minimalistic possible solution, and it implements all the requirements.
 
 ### Running the App in Docker container
 
@@ -44,6 +41,31 @@ This is a minimalistic possible solution.
 3) Run the script by issuing **./run.sh** command, 
 or if you are running Docker as a power user, run **sudo ./run.sh** command
    
-4) When you have down with the app, do not forget to stop application docker container
+4) When you have done with the app, do not forget to stop application docker containers
+```
+    docker-compose down
+```
 
-    docker stop lunar_phases_app
+5) Application super user account, will allow you to move forwards with the app.
+
+Login Email: admin@example.com
+
+Login Password: admin123
+
+**Note:**
+
+After running the script **run.sh** you will notice that there is a directory called _data
+in the project directory. This is because we applied volume mapping in our
+**docker-compose.yml** script. Specifically, 
+
+```
+services:
+  db:
+  ...
+    volumes:
+    - './_data/pgdata:/var/lib/postgresql/data/pgdata'
+```
+
+This was done in order to save initial migrations and create the super user account.
+It was a necessary step in order to fulfill the requirement number 9) and let
+the user to run the application directly from the shell script.
