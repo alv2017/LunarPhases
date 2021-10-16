@@ -44,6 +44,6 @@ This is a minimalistic possible solution.
 3) Run the script by issuing **./run.sh** command, 
 or if you are running Docker as a power user, run **sudo ./run.sh** command
    
-4) When you have down with the app, do not forget to stop application docker container
+4) When you are done with the app, do not forget to stop application docker container
 
     docker stop lunar_phases_app
