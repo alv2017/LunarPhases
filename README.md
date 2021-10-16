@@ -48,9 +48,9 @@ or if you are running Docker as a power user, run **sudo ./run.sh** command
 
 5) Application super user account, will allow you to move forwards with the app.
 
-Login Email: admin@example.com
+- Login Email: admin@example.com
 
-Login Password: admin123
+- Login Password: admin123
 
 **Note:**
 
