@@ -1,0 +1,38 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:12.8-bullseye
+    container_name: pgdb
+    volumes:
+    - './_data/pgdata:/var/lib/postgresql/data/pgdata'
+    environment:
+      POSTGRES_DB: lunar_app_db
+      POSTGRES_USER: lunar_app_admin
+      POSTGRES_PASSWORD: 'tru5tw0rthy'
+      PGDATA: /var/lib/postgresql/data/pgdata
+    restart: always
+    networks:
+      app_net:
+        ipv4_address: 192.168.0.3
+  web:
+    build: .
+    container_name: lunar_phases
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - '.:/applications/lunar_phases'
+    ports:
+      - '127.0.0.1:80:8000'
+    depends_on:
+      - db
+    restart: always
+    networks:
+      app_net:
+        ipv4_address: 192.168.0.2
+
+networks:
+  app_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: '192.168.0.0/28'

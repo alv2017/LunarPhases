@@ -84,8 +84,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'lunar.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'lunar_app_db',
+        'USER': 'lunar_app_admin',
+        'PASSWORD': 'tru5tw0rthy',
+        'HOST': '192.168.0.3',
+        'PORT': '5432'
     }
 }
 
