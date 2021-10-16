@@ -88,7 +88,7 @@ DATABASES = {
         'NAME': 'lunar_app_db',
         'USER': 'lunar_app_admin',
         'PASSWORD': 'tru5tw0rthy',
-        'HOST': '127.0.0.1',
+        'HOST': '192.168.0.3',
         'PORT': '5432'
     }
 }
