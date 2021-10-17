@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 
+APP_MODE = 'DOCKER'
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -83,15 +85,25 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'docker': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'lunar_app_db',
         'USER': 'lunar_app_admin',
         'PASSWORD': 'tru5tw0rthy',
         'HOST': '192.168.0.3',
         'PORT': '5432'
+    },
+
+    'development': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3'
     }
 }
+
+if APP_MODE == 'DEVELOPMENT':
+    DATABASES['default'] = DATABASES['development']
+else:
+    DATABASES['default'] = DATABASES['docker']
 
 
 # Password validation
