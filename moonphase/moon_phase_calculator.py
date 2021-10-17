@@ -14,7 +14,13 @@ LUNAR_PHASES = ('New Moon',
                 )
 
 
-def get_julian_days(dt):
+def get_julian_days(dt: datetime.date) -> float:
+    """
+    Caclulates Julian day.
+    Julian day is the continuous count of days since the beginning of the Julian period
+    :param dt: date
+    :return: float: Julian day
+    """
     year = dt.year
     month = dt.month
     day = dt.day
@@ -32,7 +38,12 @@ def get_julian_days(dt):
     return c + day + e + f - 1524.5
 
 
-def get_lunar_phase(dt):
+def get_lunar_phase(dt: datetime.date) -> (str, int):
+    """
+    The function takes date as an input and returns a tuple containing a moon phase and an age of Moon in days.
+    :param dt: date
+    :return: (str, int): tuple containing moon phase and moon age in days
+    """
     if dt < KNOWN_NEW_MOON:
         raise ValueError(f"The lunar phase date must be greater than {KNOWN_NEW_MOON}")
 
