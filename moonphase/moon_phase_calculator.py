@@ -7,7 +7,7 @@ LUNAR_PHASES = ('New Moon',
                 'Waxing Crescent',
                 'First Quarter',
                 'Waxing Gibbous',
-                'Full Moon'
+                'Full Moon',
                 'Waning Gibbous',
                 'Last Quarter',
                 'Waxing Crescent'
