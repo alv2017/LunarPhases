@@ -16,6 +16,8 @@ class CustomUser(AbstractUser):
 
     class Meta:
         app_label = 'account'
+        verbose_name = 'Account'
+        verbose_name_plural = 'Accounts'
 
     def __str__(self):
         return self.email
