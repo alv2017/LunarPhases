@@ -2,12 +2,12 @@
 {% block title %}Log-in{% endblock %}
 {% block content %}
 
-<h1>Moon Phase</h1>
+<div class="info">
+    <h1>{{current_date}}</h1>
 
-<p>Date: {{current_date}}</p>
+    <h3>Moon Phase: {{moon_phase}}</h3>
 
-<p>Moon Phase: {{moon_phase}}</p>
-
-<p>Moon Age in Days: {{moon_age}}</p>
+    <h3>Moon Age in Days: {{moon_age}}</h3>
+</div>
 
 {% endblock %}

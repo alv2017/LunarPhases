@@ -3,23 +3,31 @@
 <html>
 <head>
   <title>{% block title %}{% endblock %}</title>
-  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
 </head>
 <body>
+<div id="main">
   <div id="header">
-    <span class="logo">Lunar App |</span>
+    <div class="logo">
+        <img class="logo-image" src="{% static 'assets/cosmonaut.png' %}"/>
+        <h1>
+            Moon Guide
+        </h1>
+    </div>
+  </div>
 
-    <span class="user">
-    {% if request.user.is_authenticated %}
-        You are logged in as <b>{{ request.user }}</b> |
-        <a href="{% url 'account:logout' %}">Logout</a>
-    {% else %}
-        You need to <a href="{% url 'account:login' %}">log-in</a>
-    {% endif %}
-    </span>
+  <div class="user">
+  {% if request.user.is_authenticated %}
+        <div class="user-data">{{ request.user }}</div>
+        <div class="user-data"><a href="{% url 'account:logout' %}">Logout</a></div>
+  {% endif %}
   </div>
 
   {% if messages %}
+  <div id="message-block">
     <ul class="messages">
       {% for message in messages %}
         <li class="{{ message.tags }}">
@@ -28,12 +36,14 @@
         </li>
       {% endfor %}
     </ul>
+  </div>
  {% endif %}
 
   <div id="content">
     {% block content %}
     {% endblock %}
   </div>
+</div>
 
 <script>
       // Remove Django message after x was clicked
